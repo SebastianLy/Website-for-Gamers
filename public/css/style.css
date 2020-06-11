@@ -1,0 +1,83 @@
+* {
+  color: #bebebe;
+  margin: 0;
+  padding: 0;
+}
+body {
+  padding: 0px;
+  background-image: url("../background.jpg");
+}
+.flatTable {
+  width:70%;
+  margin-left:15%;
+  margin-right:15%;
+  margin-bottom:10%;
+  min-width: 500px;
+  border-collapse: collapse;
+  color: #bebebe;
+}
+.flatTable tr {
+  font-family: Orbitron;
+  height: 50px;
+  background: #111112;
+  border-bottom: rgba(0, 0, 0, 0.05) 1px solid;
+}
+.flatTable td {
+  box-sizing: border-box;
+  padding-left: 30px;
+}
+.flatTable .titleTr {
+  height: 70px;
+  text-align:center;
+  font-family:Orbitron;
+  font-size:30px;
+  color: #bebebe;
+  background: #111112;
+  border: 0px solid;
+}
+.flatTable .headingTr {
+  font-family:Orbitron;
+  height: 30px;
+  background: #232247;
+  color: 	#bebebe;
+}
+
+
+
+.main-panel {
+  font-family:Orbitron;
+  background: #232247;
+  width:70%;
+  margin-left:15%;
+  margin-right:15%;
+  float: right;
+  color: #bebebe;
+}
+
+.btn.btn-primary{
+  background-color:transparent;
+  border-color: transparent;
+  color: #bebebe;
+}
+
+input[type=text] {
+  color: black;
+}
+
+input[type=password] {
+  color: black;
+}
+
+
+
+/* Gray palette:
+font:#bebebe
+headers:#232247
+rows:#2d2d2d
+
+Black/blue palette:
+font:#bebebe
+headers:#0B0C6B
+rows:#111112
+
+ */

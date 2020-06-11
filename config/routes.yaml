@@ -1,0 +1,12 @@
+index:
+    path: /
+    controller: App\Controller\HomePageController::index
+registration:
+    path: /register
+    controller: App\Controller\RegistrationPageController::index
+login:
+    path: /login
+    controller: App\Controller\LoginPageController::index
+search:
+    path: /search
+    controller: App\Controller\SearchGameController::index
