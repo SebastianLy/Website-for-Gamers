@@ -1,20 +1,69 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Gry-wideo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
 
-{% block title %}Hello SearchGameController!{% endblock %}
-
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/Program files/xampp/htdocs/php_mvc_projekt/src/Controller/SearchGameController.php'|file_link(0) }}">src/Controller/SearchGameController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/Program files/xampp/htdocs/php_mvc_projekt/templates/search_game/top10.html.twig'|file_link(0) }}">templates/search_game/index.html.twig</a></code></li>
-    </ul>
+<body>
+<div class="header-row" id="header-row" style="padding: 0; overflow:hidden; height:150px;">
+    <div class="container-fluid" style="padding: 0;">
+        <div class="row">
+            <div class="col-xs-12">
+                <a class="navbar-brand logo" href="/">
+                    <img src="banner.png" alt="company logo"
+                         style="width: 60%;transform: translateX(-50%);left: 50%;position: absolute;">
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
-{% endblock %}
+<div class = "main-panel" id = "main-panel">
+    <button type="button" class="btn btn-primary" style="float:right"><a href = "login">LOGOWANIE</a></button>
+    <button type="button" class="btn btn-primary" style="float:right"><a href = "register">REJESTRACJA</a></button>
+    <button type="button" class="btn btn-primary"><a href = "search">WYSZUKAJ</a></button>
+    <button type="button" class="btn btn-primary"><a href = "/">TOP 10</a></button>
+</div>
+
+<table class="flatTable">
+
+    <tr class="titleTr">
+        <td colspan="5">Wyniki</td>
+    </tr>
+
+    <tr class="headingTr">
+        <td>NAZWA</td>
+        <td>GATUNEK</td>
+        <td>PLATFORMA</td>
+        <td>OCENA</td>
+        <td></td>
+    </tr>
+
+    {% for game in games %}
+        <tr>
+            <td>{{ game.title }}</td>
+            <td>{{ game.genre}}</td>
+            <td>{{ game.platform }}</td>
+            <td>{{ game.averagerating}}</td>
+            <td><a href="">RECENZJA</a></td>
+        </tr>
+    {% endfor %}
+
+</table>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Advent+Pro&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -10,3 +10,6 @@ login:
 search:
     path: /search
     controller: App\Controller\SearchGameController::index
+searchresults:
+    path: /searchresults
+    controller: App\Controller\SearchGameController::search
