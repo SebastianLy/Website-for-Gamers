@@ -15,6 +15,5 @@ class HomePageController extends AbstractController
         $entity_manager = $this->getDoctrine()->getManager();
         $games = $entity_manager->getRepository(Game::class)->findAll();
         return $this->render('home_page/top10.html.twig', array('games' => $games));
-        //return new Response(readfile("index.html"));
     }
 }

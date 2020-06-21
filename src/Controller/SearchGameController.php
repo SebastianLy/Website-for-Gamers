@@ -20,6 +20,6 @@ class SearchGameController extends AbstractController
         $entity_manager = $this->getDoctrine()->getManager();
         $title = $_POST['title'];
         $games = $entity_manager->getRepository(Game::class)->findBy(array('title' => $title));
-        return $this->render('search_game/index.html.twig', array('games' => $games));
+        return $this->render('search_game/searchgame.html.twig', array('games' => $games));
     }
 }
