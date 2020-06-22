@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\GameRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass=GameRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\GameRepository", repositoryClass=GameRepository::class)
+ * @UniqueEntity(fields="title", message="Taka gra juz istnieje.")
  */
 class Game
 {
@@ -19,36 +22,79 @@ class Game
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 120,
+     *      minMessage = "Tytul musi miec conajmniej {{ limit }} znaki.",
+     *      maxMessage = "Tytul moze miec maksymalnie {{ limit }} znakow.",
+     *      allowEmptyString = false
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 120,
+     *      minMessage = "Tytul musi miec conajmniej {{ limit }} znaki.",
+     *      maxMessage = "Tytul moze miec maksymalnie {{ limit }} znakow.",
+     *      allowEmptyString = false
+     * )
      */
     private $genre;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 120,
+     *      minMessage = "Tytul musi miec conajmniej {{ limit }} znaki.",
+     *      maxMessage = "Tytul moze miec maksymalnie {{ limit }} znakow.",
+     *      allowEmptyString = false
+     * )
      */
     private $platform;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 120,
+     *      minMessage = "Tytul musi miec conajmniej {{ limit }} znaki.",
+     *      maxMessage = "Tytul moze miec maksymalnie {{ limit }} znakow.",
+     *      allowEmptyString = false
+     * )
      */
     private $average_rating;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(
+     *      max = 500,
+     *      maxMessage = "Recenzja moze miec maksymalnie {{ limit }} znakow.",
+     *      allowEmptyString = true
+     * )
      */
     private $review1;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(
+     *      max = 500,
+     *      maxMessage = "Recenzja moze miec maksymalnie {{ limit }} znakow.",
+     *      allowEmptyString = true
+     * )
      */
     private $review2;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(
+     *      max = 500,
+     *      maxMessage = "Recenzja moze miec maksymalnie {{ limit }} znakow.",
+     *      allowEmptyString = true
+     * )
      */
     private $review3;
 

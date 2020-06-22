@@ -13,3 +13,6 @@ search:
 searchresults:
     path: /searchresults
     controller: App\Controller\SearchGameController::search
+addgame:
+    path: /addgame
+    controller: App\Controller\AddGameController::index
