@@ -34,69 +34,38 @@ class Game
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 120,
-     *      minMessage = "Tytul musi miec conajmniej {{ limit }} znaki.",
-     *      maxMessage = "Tytul moze miec maksymalnie {{ limit }} znakow.",
-     *      allowEmptyString = false
-     * )
      */
     private $genre;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 120,
-     *      minMessage = "Tytul musi miec conajmniej {{ limit }} znaki.",
-     *      maxMessage = "Tytul moze miec maksymalnie {{ limit }} znakow.",
-     *      allowEmptyString = false
-     * )
+     * @ORM\Column(type="json", length=255)
      */
     private $platform;
 
     /**
-     * @ORM\Column(type="float")
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 120,
-     *      minMessage = "Tytul musi miec conajmniej {{ limit }} znaki.",
-     *      maxMessage = "Tytul moze miec maksymalnie {{ limit }} znakow.",
-     *      allowEmptyString = false
-     * )
+     * @ORM\Column(type="float", nullable=true)
      */
     private $average_rating;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      * @Assert\Length(
      *      max = 500,
      *      maxMessage = "Recenzja moze miec maksymalnie {{ limit }} znakow.",
      *      allowEmptyString = true
      * )
      */
-    private $review1;
+    private $review;
 
     /**
-     * @ORM\Column(type="text")
-     * @Assert\Length(
-     *      max = 500,
-     *      maxMessage = "Recenzja moze miec maksymalnie {{ limit }} znakow.",
-     *      allowEmptyString = true
-     * )
+     * @ORM\Column(type="float", nullable=true)
      */
-    private $review2;
+    private $number_of_votes;
 
     /**
-     * @ORM\Column(type="text")
-     * @Assert\Length(
-     *      max = 500,
-     *      maxMessage = "Recenzja moze miec maksymalnie {{ limit }} znakow.",
-     *      allowEmptyString = true
-     * )
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private $review3;
+    private $sum_of_votes;
 
     public function getId(): ?int
     {
@@ -127,12 +96,12 @@ class Game
         return $this;
     }
 
-    public function getPlatform(): ?string
+    public function getPlatform(): ?array
     {
         return $this->platform;
     }
 
-    public function setPlatform(string $platform): self
+    public function setPlatform(array $platform): self
     {
         $this->platform = $platform;
 
@@ -144,45 +113,45 @@ class Game
         return $this->average_rating;
     }
 
-    public function setAverageRating(float $average_rating): self
+    public function setAverageRating(?float $average_rating): self
     {
         $this->average_rating = $average_rating;
 
         return $this;
     }
 
-    public function getReview1(): ?string
+    public function getReview(): ?string
     {
-        return $this->review1;
+        return $this->review;
     }
 
-    public function setReview1(string $review1): self
+    public function setReview(?string $review): self
     {
-        $this->review1 = $review1;
+        $this->review = $review;
 
         return $this;
     }
 
-    public function getReview2(): ?string
+    public function getNumberOfVotes(): ?float
     {
-        return $this->review2;
+        return $this->number_of_votes;
     }
 
-    public function setReview2(string $review2): self
+    public function setNumberOfVotes(?float $number_of_votes): self
     {
-        $this->review2 = $review2;
+        $this->number_of_votes = $number_of_votes;
 
         return $this;
     }
 
-    public function getReview3(): ?string
+    public function getSumOfVotes(): ?int
     {
-        return $this->review3;
+        return $this->sum_of_votes;
     }
 
-    public function setReview3(string $review3): self
+    public function setSumOfVotes(?int $sum_of_votes): self
     {
-        $this->review3 = $review3;
+        $this->sum_of_votes = $sum_of_votes;
 
         return $this;
     }

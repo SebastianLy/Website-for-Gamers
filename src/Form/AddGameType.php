@@ -8,6 +8,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class AddGameType extends AbstractType
 {
@@ -17,17 +19,51 @@ class AddGameType extends AbstractType
             ->add('title', TextType::class, [
                 'label' => 'NAZWA'
             ])
-            ->add('genre', TextType::class, [
-                'label' => 'GATUNEK'
+            ->add('genre', ChoiceType::class, [
+                'label' => 'GATUNEK',
+                'choices'  => [
+                    'Bijatyka' => 'Bijatyka',
+                    'FPS' => 'FPS',
+                    'Platformowka' => 'Platformowka',
+                    'Przygodowa' => 'Przygodowa',
+                    'Akcji' => 'Akcji',
+                    'MMORPG' => 'MMORPG',
+                    'RPG' => 'RPG',
+                    'Hack and slash' => 'Hack and slash',
+                    'jRPG' => 'jRPG',
+                    'Roguelike' => 'Roguelike',
+                    'Symulator' => 'Symulator',
+                    'Wyscigowe' => 'Wyscigowe',
+                    'Sportowe' => 'Sportowe',
+                    'RTS' => 'RTS',
+                ],
             ])
-            ->add('platform', TextType::class, [
-                'label'  => ['label' => 'PLATFORMA'],
+            ->add('platform', ChoiceType::class, [
+                'label'  => 'PLATFORMA',
+                'empty_data' => 'Windows',
+                'choices'  => [
+                    'Windows' => 'Windows',
+                    'Mac' => 'Mac',
+                    'Playstation' => 'Playstation',
+                    'Xbox' => 'Xbox',
+                ],
+                'expanded' => true,
+                'multiple' => true
             ])
-            ->add('averageRating', TextType::class, [
-                'label'  => ['label' => 'OCENA'],
+            ->add('averageRating', ChoiceType::class, [
+                'label' => 'OCENA',
+                'required'   => false,
+                'choices'  => [
+                    '1' => 1,
+                    '2' => 2,
+                    '3' => 3,
+                    '4' => 4,
+                    '5' => 5,
+                ],
             ])
-            ->add('review1', TextType::class, [
-                'label'  => ['label' => 'RECENZJA'],
+            ->add('review', TextareaType::class, [
+                'label'  => 'RECENZJA',
+                'required'   => false
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-primary',

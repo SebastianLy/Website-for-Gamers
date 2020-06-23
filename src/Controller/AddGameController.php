@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Controller;
 
 use App\Entity\Game;
@@ -15,16 +14,16 @@ class AddGameController extends AbstractController
         $game = new Game();
         $form = $this->createForm(AddGameType::class, $game);
         $form->handleRequest($request);
-/*        if($form->isSubmitted() && $form->isValid())
+        if($form->isSubmitted() && $form->isValid())
         {
             $game=$form->getData();
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($game);
             $entityManager->flush();
-            return $this->render('add_game/addgame.html.twig', [
-                'game_name'=> $game->getName()
+            return $this->render('add_game/success.html.twig', [
+                'game_name'=> $game->getTitle()
             ]);
-        }*/
+        }
         return $this->render('add_game/addgame.html.twig', [
             'form'=>$form->createView()
         ]);
