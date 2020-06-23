@@ -14,11 +14,21 @@
     </tr>
     {% for game in games %}
         <tr>
-            <td>{{ game.title }}</td>
+            <td>
+                <form action="rategame" method="post">
+                    <input type="hidden" name="id" value="{{ game.id }}">
+                    <button type="submit" class="btn btn-primary" style="border-color:white">OCEN</button>
+                </form>
+                {{ game.title }}
+            </td>
             <td>{{ game.genre}}</td>
             <td>
                 {% for platform in game.platform %}
-                    {{ platform }}
+                    {% if loop.last %}
+                        {{ platform }}
+                    {% else %}
+                        {{ platform }},
+                    {% endif %}
                 {% endfor %}
             </td>
             <td>{{ game.averagerating}}</td>

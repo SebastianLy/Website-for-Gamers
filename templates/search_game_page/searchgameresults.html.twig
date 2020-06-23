@@ -20,7 +20,11 @@
             <td>{{ game.genre}}</td>
             <td>
                 {% for platform in game.platform %}
-                    {{ platform }}
+                    {% if loop.last %}
+                        {{ platform }}
+                    {% else %}
+                        {{ platform }},
+                    {% endif %}
                 {% endfor %}
             </td>
             <td>{{ game.averagerating}}</td>

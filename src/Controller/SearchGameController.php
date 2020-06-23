@@ -4,14 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Game;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 
 class SearchGameController extends AbstractController
 {
 
     public function index()
     {
-        return new Response(readfile("search.html"));
+        return $this->render('search_game_page/searchgame.html.twig');
     }
 
     public function search()
@@ -19,6 +18,6 @@ class SearchGameController extends AbstractController
         $entity_manager = $this->getDoctrine()->getManager();
         $title = $_POST['title'];
         $games = $entity_manager->getRepository(Game::class)->findByTitle(array($title));
-        return $this->render('search_game/searchgame.html.twig', array('games' => $games));
+        return $this->render('search_game_page/searchgameresults.html.twig', array('games' => $games));
     }
 }

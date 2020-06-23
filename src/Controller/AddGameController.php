@@ -20,11 +20,11 @@ class AddGameController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($game);
             $entityManager->flush();
-            return $this->render('add_game/success.html.twig', [
+            return $this->render('add_game_page/success.html.twig', [
                 'game_name'=> $game->getTitle()
             ]);
         }
-        return $this->render('add_game/addgame.html.twig', [
+        return $this->render('add_game_page/addgame.html.twig', [
             'form'=>$form->createView()
         ]);
     }

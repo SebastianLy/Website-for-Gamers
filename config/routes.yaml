@@ -16,3 +16,6 @@ searchresults:
 addgame:
     path: /addgame
     controller: App\Controller\AddGameController::index
+rategame:
+    path: /rategame
+    controller: App\Controller\RateGameController::index

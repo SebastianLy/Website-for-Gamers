@@ -1,0 +1,33 @@
+{%  extends 'base.html.twig' %}
+
+{% block title %}
+    Oceniasz gre {{ game_name }}
+{% endblock %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+
+        <tr>
+            <td style="text-align: center; vertical-align: middle;">{{ form_label(form.averageRating) }}</td>
+        </tr>
+
+        <tr>
+            <td style="text-align: center; vertical-align: middle;">{{ form_widget(form.averageRating) }} {{ form_errors(form.averageRating) }}</td>
+        </tr>
+
+        <tr>
+            <td style="text-align: center; vertical-align: middle;">{{ form_label(form.review) }}</td>
+        </tr>
+
+        <tr>
+            <td style="text-align: center; vertical-align: middle;">{{ form_widget(form.review) }} {{ form_errors(form.review) }}</td>
+        </tr>
+
+        <tr>
+            <td style="text-align: center; vertical-align: middle;">{{ form_row(form.submit) }}</td>
+        </tr>
+
+    {{ form_end(form) }}
+
+{% endblock %}

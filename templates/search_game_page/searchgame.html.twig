@@ -1,0 +1,21 @@
+{%  extends 'base.html.twig' %}
+
+{% block title %}
+    WYSZUKAJ GRE
+{% endblock %}
+
+{% block body %}
+
+    <form action="searchresults" method="post">
+
+    <tr>
+        <td style="text-align: center; vertical-align: middle;"><input type="text" name="title"></td>
+    </tr>
+
+    <tr>
+        <td style="text-align: center; vertical-align: middle;"><button type="submit" class="btn btn-primary" style="border-color:white">SZUKAJ</button></td>
+    </tr>
+
+    </form>
+
+{% endblock %}

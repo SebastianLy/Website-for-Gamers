@@ -24,7 +24,7 @@ class GameRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('p')
             ->where('REGEXP(p.title, :regexp) = true')
             ->setParameter('regexp', $title)
-            ->orderBy('p.average_rating', 'ASC');
+            ->orderBy('p.average_rating', 'DESC');
         $query = $qb->getQuery();
         return $query->execute();
     }
