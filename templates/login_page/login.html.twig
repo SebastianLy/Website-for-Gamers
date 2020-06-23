@@ -1,20 +1,33 @@
-{% extends 'base.html.twig' %}
+{%  extends 'base.html.twig' %}
 
-{% block title %}Hello LoginPageController!{% endblock %}
+{% block title %}
+    REJESTRACJA
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {{ form_start(form) }}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/Program files/xampp/htdocs/php_mvc_projekt/src/Controller/LoginPageController.php'|file_link(0) }}">src/Controller/LoginPageController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/Program files/xampp/htdocs/php_mvc_projekt/templates/login_page/top10.html.twig'|file_link(0) }}">templates/login_page/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <tr>
+        <td style="text-align: center; vertical-align: middle;">{{ form_label(form.name) }}</td>
+    </tr>
+
+    <tr>
+        <td style="text-align: center; vertical-align: middle;">{{ form_widget(form.name) }} {{ form_errors(form.name) }}</td>
+    </tr>
+
+    <tr>
+        <td style="text-align: center; vertical-align: middle;">{{ form_label(form.password) }}</td>
+    </tr>
+
+    <tr>
+        <td style="text-align: center; vertical-align: middle;">{{ form_widget(form.password) }} {{ form_errors(form.password) }}</td>
+    </tr>
+
+    <tr>
+        <td style="text-align: center; vertical-align: middle;">{{ form_row(form.submit) }}</td>
+    </tr>
+
+    {{ form_end(form) }}
+
 {% endblock %}

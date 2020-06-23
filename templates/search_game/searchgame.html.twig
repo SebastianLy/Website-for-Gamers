@@ -24,7 +24,7 @@
                 {% endfor %}
             </td>
             <td>{{ game.averagerating}}</td>
-            <td>{{ game.review}}</td>
+            <td style="overflow:auto; overflow-wrap:break-word; max-width:400px;">{{ game.review}}</td>
         </tr>
     {% endfor %}
 
