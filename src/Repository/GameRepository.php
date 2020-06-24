@@ -19,6 +19,7 @@ class GameRepository extends ServiceEntityRepository
         parent::__construct($registry, Game::class);
     }
 
+    # Autor: Sebastian Lyszkowski-----------------------------------------------------------------
     public function findByTitle($title): array
     {
         $qb = $this->createQueryBuilder('p')
@@ -28,6 +29,18 @@ class GameRepository extends ServiceEntityRepository
         $query = $qb->getQuery();
         return $query->execute();
     }
+
+    public function count($title)
+    {
+        $qb = $this->createQueryBuilder('p');
+        return $qb
+            ->select('count(p.id)')
+            ->where('REGEXP(p.title, :regexp) = true')
+            ->setParameter('regexp', $title)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+# ---------------------------------------------------------------------------------------------------
 
     // /**
     //  * @return Game[] Returns an array of Game objects

@@ -1,4 +1,5 @@
 <?php
+# Autor: Sebastian Lyszkowski
 
 namespace App\Entity;
 
@@ -43,7 +44,7 @@ class Game
     private $platform;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="decimal", precision=3, scale=2, nullable=true)
      */
     private $average_rating;
 
@@ -108,12 +109,12 @@ class Game
         return $this;
     }
 
-    public function getAverageRating(): ?float
+    public function getAverageRating(): ?string
     {
         return $this->average_rating;
     }
 
-    public function setAverageRating(?float $average_rating): self
+    public function setAverageRating(?string $average_rating): self
     {
         $this->average_rating = $average_rating;
 
@@ -137,9 +138,9 @@ class Game
         return $this->number_of_votes;
     }
 
-    public function setNumberOfVotes(?float $number_of_votes): self
+    public function setNumberOfVotes(): self
     {
-        $this->number_of_votes = $number_of_votes;
+        $this->number_of_votes += 1;
 
         return $this;
     }
@@ -151,7 +152,9 @@ class Game
 
     public function setSumOfVotes(?int $sum_of_votes): self
     {
-        $this->sum_of_votes = $sum_of_votes;
+        $this->sum_of_votes += $sum_of_votes;
+        $this->setNumberOfVotes();
+        $this->setAverageRating($this->getSumOfVotes()/$this->getNumberOfVotes());
 
         return $this;
     }

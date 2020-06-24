@@ -1,4 +1,5 @@
 <?php
+# Autor: Sebastian Lyszkowski
 
 namespace App\Controller;
 
@@ -18,6 +19,7 @@ class SearchGameController extends AbstractController
         $entity_manager = $this->getDoctrine()->getManager();
         $title = $_POST['title'];
         $games = $entity_manager->getRepository(Game::class)->findByTitle(array($title));
-        return $this->render('search_game_page/searchgameresults.html.twig', array('games' => $games));
+        $count = $entity_manager->getRepository(Game::class)->count(array($title));
+        return $this->render('search_game_page/searchgameresults.html.twig', array('games' => $games, 'count' => $count));
     }
 }

@@ -1,3 +1,4 @@
+# Autor: Sebastian Lyszkowski
 index:
     path: /
     controller: App\Controller\HomePageController::index

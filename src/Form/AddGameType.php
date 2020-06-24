@@ -1,4 +1,5 @@
 <?php
+# Autor: Sebastian Lyszkowski
 
 namespace App\Form;
 
@@ -50,9 +51,8 @@ class AddGameType extends AbstractType
                 'expanded' => true,
                 'multiple' => true
             ])
-            ->add('averageRating', ChoiceType::class, [
+            ->add('sumOfVotes', ChoiceType::class, [
                 'label' => 'OCENA',
-                'required'   => false,
                 'choices'  => [
                     '1' => 1,
                     '2' => 2,

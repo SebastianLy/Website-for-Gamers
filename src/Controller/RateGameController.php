@@ -1,5 +1,5 @@
 <?php
-
+# Autor: Sebastian Lyszkowski
 
 namespace App\Controller;
 
@@ -17,14 +17,14 @@ class RateGameController extends AbstractController
     public function index(Request $request)
     {
         $entity_manager = $this->getDoctrine()->getManager();
-        # W jaki inny sposób przesłać id gry którą chcemy ocenić, żeby nie było błędu?
-        $id = 1;
-        if ($request->isMethod('POST')) {
-            $id = $_POST['id'];
+        if ($request->isMethod('GET')) {
+            $id = $_GET['id'];
         }
-
-        $data = ['averageRating' => null, 'review' => null];
-
+        else
+        {
+            $id = $request->request->get('form')['id'];
+        }
+        $data = ['averageRating' => null, 'review' => null, 'id' => null];
         $form = $this->createFormBuilder($data)
             ->add('averageRating', ChoiceType::class, [
                 'label' => 'OCENA',
@@ -50,16 +50,21 @@ class RateGameController extends AbstractController
             ])
             ->getForm();
 
-        $id = $request->request->get('id');
         $game = $entity_manager->getRepository(Game::class)->findOneBy(array('id' => $id));
         #$form = $this->createForm(RateGameType::class, $data);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
-            $review = $request->request->get('review');
-            $rating = $request->request->get('averageRating');
-            $game->setAverageRating($rating);
-            $game->setReview($review);
+            $review = $request->request->get('form')['review'];
+            $rating = $request->request->get('form')['averageRating'];
+            $game->setSumOfVotes($rating);
+            $game->setNumberOfVotes();
+            $rate = ($game->getSumOfVotes())/($game->getNumberOfVotes());
+            if($review != '')
+            {
+                $game->setReview($review);
+            }
+            $game->setAverageRating($rate);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($game);
             $entityManager->flush();

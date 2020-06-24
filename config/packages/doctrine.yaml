@@ -16,6 +16,8 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
+# Autor: Sebastian Lyszkowski -------------------------------------------------------
         dql:
             string_functions:
                 regexp: DoctrineExtensions\Query\Mysql\Regexp
+#------------------------------------------------------------------------------------

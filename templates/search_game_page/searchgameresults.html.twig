@@ -1,7 +1,8 @@
+{# Autor: Sebastian Lyszkowski #}
 {%  extends 'base.html.twig' %}
 
 {% block title %}
-    WYNIKI
+    Znaleziono {{ count }} wynikow
 {% endblock %}
 
 {% block body %}
@@ -27,7 +28,12 @@
                     {% endif %}
                 {% endfor %}
             </td>
-            <td>{{ game.averagerating}}</td>
+            <td>
+                {{ game.averagerating}}
+                <form action="rategame" method="get">
+                    <input type="hidden" name="id" value="{{ game.id }}">
+                    <button type="submit" class="btn btn-primary" style="border-color:white">OCEN</button>
+                </form></td>
             <td style="overflow:auto; overflow-wrap:break-word; max-width:400px;">{{ game.review}}</td>
         </tr>
     {% endfor %}
