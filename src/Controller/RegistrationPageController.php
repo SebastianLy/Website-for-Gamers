@@ -6,10 +6,11 @@ use App\Entity\User;
 use App\Form\UserRegisterType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class RegistrationPageController extends AbstractController
 {
-    public function index(Request $request)
+    public function index(Request $request, UserPasswordEncoderInterface $encoder)
     {
         $user = new User();
         $form = $this->createForm(UserRegisterType::class, $user);
@@ -17,6 +18,7 @@ class RegistrationPageController extends AbstractController
         if($form->isSubmitted() && $form->isValid())
         {
             $user=$form->getData();
+            $user->setPassword($encoder->encodePassword($user, $user->getPassword()));
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();

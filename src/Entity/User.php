@@ -49,7 +49,7 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=150)
      * @Assert\Length(
      *      min = 5,
      *      max = 30,
