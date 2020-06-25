@@ -1,4 +1,4 @@
-# Autor: Sebastian Lyszkowski
+# Autorzy: Sebastian Lyszkowski, Marek Bobrowski
 index:
     path: /
     controller: App\Controller\HomePageController::index
@@ -35,3 +35,9 @@ searchuser:
 changepageuser:
     path: /changepageuser
     controller: App\Controller\UserManagementController::changePageUser
+news:
+    path: /news
+    controller: App\Controller\NewsController::index
+addpost:
+    path: /addpost
+    controller: App\Controller\AddPostController::index

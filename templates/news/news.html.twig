@@ -1,0 +1,19 @@
+{# Autor: Marek Bobrowski #}
+{%  extends 'base.html.twig' %}
+
+{% block title %}
+    NOWOSCI ZE SWIATA GIER
+{% endblock %}
+
+{% block body %}
+    {% for post in news %}
+        <tr>
+            <td>{{ post.author }}</td>
+            <td>{{ post.date|date('Y-m-d') }}</td>
+        </tr>
+        <tr>
+            <td>{{ post.content }}</td>
+            <td></td>
+        </tr>
+    {% endfor %}
+{% endblock %}

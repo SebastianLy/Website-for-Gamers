@@ -1,3 +1,4 @@
+{# Autorzy: Marek Bobrowski, Sebastian Lyszkowski #}
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -20,13 +21,31 @@
     </div>
 </div>
 <div class = "main-panel" id = "main-panel">
-    <button type="button" class="btn btn-primary" style="float:right"><a href = "login">LOGOWANIE</a></button>
-    <button type="button" class="btn btn-primary" style="float:right"><a href = "register">REJESTRACJA</a></button>
-    <button type="button" class="btn btn-primary"><a href = "search">WYSZUKAJ</a></button>
-    <button type="button" class="btn btn-primary"><a href = "/">TOP 10</a></button>
-    <button type="button" class="btn btn-primary"><a href = "addgame">DODAJ GRE</a></button>
-    <button type="button" class="btn btn-primary"><a href = "userlist">ZARZADZAJ UZYTKOWNIKAMI</a></button>
+    <a href="search" class="btn btn-primary">WYSZUKAJ</a>
+    <a href="/" class="btn btn-primary">TOP 10</a>
+    <a href="news" class="btn btn-primary">NOWOSCI</a>
+
+    {% if is_granted('ROLE_USER') %}
+        <a href="logout" class="btn btn-primary" style="float:right">WYLOGUJ</a>
+    {% else %}
+        <a href="login" class="btn btn-primary" style="float:right">LOGOWANIE</a>
+    {% endif %}
+
+    {% if not is_granted('ROLE_USER') %}
+        <a href="register" class="btn btn-primary" style="float:right">REJESTRACJA</a>
+    {% endif %}
+
+    {% if is_granted('ROLE_USER') %}
+        <a href="addgame" class="btn btn-primary">DODAJ GRE</a>
+    {% endif %}
 </div>
+
+{% if is_granted('ROLE_ADMIN') %}
+    <div class = "main-panel" id = "main-panel" style = "background:#bd34eb">
+        <a href="userlist" class="btn btn-primary">ZARZADZAJ UZYTKOWNIKAMI</a>
+        <a href="addpost" class="btn btn-primary">DODAJ POST</a>
+    </div>
+{% endif %}
 
 <table class="flatTable">
 

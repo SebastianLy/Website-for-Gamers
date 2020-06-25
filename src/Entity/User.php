@@ -1,5 +1,5 @@
 <?php
-
+# Autor: Marek Bobrowski
 namespace App\Entity;
 
 use App\Repository\UserRepository;

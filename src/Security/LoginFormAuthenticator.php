@@ -1,5 +1,5 @@
 <?php
-
+# Autor: Marek Bobrowski
 namespace App\Security;
 
 use App\Entity\User;
