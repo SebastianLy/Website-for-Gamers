@@ -33,9 +33,24 @@
                 <form action="rategame" method="get">
                     <input type="hidden" name="id" value="{{ game.id }}">
                     <button type="submit" class="btn btn-primary" style="border-color:white">OCEN</button>
-                </form></td>
+                </form>
+            </td>
             <td style="overflow:auto; overflow-wrap:break-word; max-width:400px;">{{ game.review}}</td>
         </tr>
     {% endfor %}
+
+    {% if pages > 1 %}
+        <tr class="titleTr">
+            <td colspan="5">
+                {% for page in 1..pages %}
+                <form action="changepage" method="post" style="display: inline-block">
+                    <input type="hidden" name="title" value="{{ title }}">
+                    <input type="hidden" name="pagenumber" value="{{ page }}">
+                    <button type="submit" class="btn btn-primary" style="border-color:white" name="page">{{ page }}</button>
+                </form>
+                {% endfor %}
+            </td>
+        </tr>
+    {% endif %}
 
 {% endblock %}

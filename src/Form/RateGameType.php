@@ -28,7 +28,7 @@ class RateGameType extends AbstractType
                 ],
             ])
             ->add('id', HiddenType::class, [
-                'data' => 'abcdef',
+                'data' => $id,
             ])
             ->add('review', TextareaType::class, [
                 'label'  => 'RECENZJA',

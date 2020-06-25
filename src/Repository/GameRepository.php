@@ -20,11 +20,13 @@ class GameRepository extends ServiceEntityRepository
     }
 
     # Autor: Sebastian Lyszkowski-----------------------------------------------------------------
-    public function findByTitle($title): array
+    public function findByTitle($title, $offset): array
     {
         $qb = $this->createQueryBuilder('p')
             ->where('REGEXP(p.title, :regexp) = true')
             ->setParameter('regexp', $title)
+            ->setMaxResults(10)
+            ->setFirstResult($offset)
             ->orderBy('p.average_rating', 'DESC');
         $query = $qb->getQuery();
         return $query->execute();

@@ -19,6 +19,46 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
+    public function findAllFrom($offset): array
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->setMaxResults(10)
+            ->setFirstResult($offset);
+        $query = $qb->getQuery();
+        return $query->execute();
+    }
+
+    public function count($id)
+    {
+        $qb = $this->createQueryBuilder('p');
+        return $qb
+            ->select('count(p.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function findByName($name, $offset): array
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->where('REGEXP(p.name, :regexp) = true')
+            ->setParameter('regexp', $name)
+            ->setMaxResults(10)
+            ->setFirstResult($offset);
+        $query = $qb->getQuery();
+        return $query->execute();
+    }
+
+    public function countName($name)
+    {
+        $qb = $this->createQueryBuilder('p');
+        return $qb
+            ->select('count(p.id)')
+            ->where('REGEXP(p.name, :regexp) = true')
+            ->setParameter('regexp', $name)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
     // /**
     //  * @return User[] Returns an array of User objects
     //  */

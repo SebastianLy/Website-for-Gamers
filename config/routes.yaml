@@ -20,3 +20,18 @@ addgame:
 rategame:
     path: /rategame
     controller: App\Controller\RateGameController::index
+changepage:
+    path: /changepage
+    controller: App\Controller\SearchGameController::changePage
+userlist:
+    path: /userlist
+    controller: App\Controller\UserManagementController::index
+deleteuser:
+    path: /deleteuser
+    controller: App\Controller\UserManagementController::delete
+searchuser:
+    path: /searchuser
+    controller: App\Controller\UserManagementController::search
+changepageuser:
+    path: /changepageuser
+    controller: App\Controller\UserManagementController::changePageUser
