@@ -2,14 +2,11 @@
 {%  extends 'base.html.twig' %}
 
 {% block title %}
-    <div style = "text-align: left">NOWOŚCI ZE ŚWIATA GIER</div>
-    <div style = "text-align: right">
-        <form action="searchpost" method="post">
-            <input type="text" style="display: inline-block; width: 130px" name="title">
-            <button type="submit" class="btn btn-primary" style="border-color:white; display: inline-block">SZUKAJ</button>
-        </form>
-    </div>
-
+    NOWOŚCI ZE ŚWIATA GIER
+    <form action="searchpost" method="post" style="display: inline-block; float: right">
+        <input type="text" style="width: 130px;font-size:15px" name="title">
+        <button type="submit" class="btn btn-primary" style="border-color:white;font-size:15px ">SZUKAJ</button>
+    </form>
 {% endblock %}
 
 {% block body %}

@@ -6,27 +6,30 @@
 {% endblock %}
 
 {% block body %}
-
     <tr class="headingTr">
-        <td colspan="2">NAZWA</td>
-        <td colspan="2">E-MAIL</td>
-        <td>CZYNNOŚCI</td>
+        <td colspan="1">NAZWA</td>
+        <td colspan="1">E-MAIL</td>
+        <td colspan="1">STAN KONTA</td>
+        <td colspan="3">CZYNNOŚCI</td>
     </tr>
-
     {% for user in users %}
         <tr>
             <td colspan="1">{{ user.name }}</td>
             <td colspan="1">{{ user.email}}</td>
-            <td colspan="1">{{ user.banned ? 'TAK' : 'NIE'}}</td>
+            <td colspan="1">{{ user.banned ? 'AKTYWNE' : 'ZAWIESZONE'}}</td>
             <td colspan="3">
-                <form action="ban" method="post" style="display: inline-block">
-                    <input type="hidden" name="id" value="{{ user.id }}">
-                    <button type="submit" class="btn btn-primary" style="border-color:white">ZAWIEŚ</button>
-                </form>
-                <form action="unban" method="post" style="display: inline-block">
-                    <input type="hidden" name="id" value="{{ user.id }}">
-                    <button type="submit" class="btn btn-primary" style="border-color:white">ODWIEŚ</button>
-                </form>
+                {% if user.banned == 0 %}
+                    <form action="ban" method="post" style="display: inline-block">
+                        <input type="hidden" name="id" value="{{ user.id }}">
+                        <button type="submit" class="btn btn-primary" style="border-color:white">ZAWIEŚ</button>
+                    </form>
+                {% endif %}
+                {% if user.banned == 1 %}
+                    <form action="unban" method="post" style="display: inline-block">
+                        <input type="hidden" name="id" value="{{ user.id }}">
+                        <button type="submit" class="btn btn-primary" style="border-color:white">ODWIEŚ</button>
+                    </form>
+                {% endif %}
                 <form action="deleteuser" method="post" style="display: inline-block">
                     <input type="hidden" name="id" value="{{ user.id }}">
                     <button type="submit" class="btn btn-primary" style="border-color:white">USUŃ</button>

@@ -12,8 +12,9 @@ class UserManagementController extends AbstractController
     {
         $entity_manager = $this->getDoctrine()->getManager();
         $count = $entity_manager->getRepository(User::class)->count(array(1));
-        $pages = ceil($count/10);
         $users = $entity_manager->getRepository(User::class)->findAllFrom(0);
+        $count = 1;
+        $pages = 1;
         return $this->render('user_list_page/userlist.html.twig',
             array('users' => $users, 'count' => $count, 'pages' => $pages));
     }
