@@ -12,6 +12,7 @@
         <td>GATUNEK</td>
         <td>PLATFORMA</td>
         <td>OCENA</td>
+        <td></td>
         <td>RECENZJA</td>
     </tr>
 
@@ -30,18 +31,24 @@
             </td>
             <td>
                 {{ game.averagerating}}
-                <form action="rategame" method="get">
-                    <input type="hidden" name="id" value="{{ game.id }}">
-                    <button type="submit" class="btn btn-primary" style="border-color:white">OCEN</button>
-                </form>
             </td>
+            {% if is_granted('ROLE_USER') %}
+                <td>
+                    <form action="rategame" method="get">
+                        <input type="hidden" name="id" value="{{ game.id }}">
+                        <button type="submit" class="btn btn-primary" style="border-color:white">OCEN</button>
+                    </form>
+                </td>
+            {% else %}
+                <td></td>
+            {% endif %}
             <td style="overflow:auto; overflow-wrap:break-word; max-width:400px;">{{ game.review}}</td>
         </tr>
     {% endfor %}
 
     {% if pages > 1 %}
         <tr class="titleTr">
-            <td colspan="5">
+            <td colspan="6">
                 {% for page in 1..pages %}
                 <form action="changepage" method="post" style="display: inline-block">
                     <input type="hidden" name="title" value="{{ title }}">

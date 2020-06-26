@@ -72,7 +72,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Nie znaleziono uzytkownika.');
+            throw new CustomUserMessageAuthenticationException('Niepoprawna nazwa uzytkownika lub haslo.');
         }
 
         return $user;
@@ -80,7 +80,20 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     public function checkCredentials($credentials, UserInterface $user)
     {
-        return $this->encoder->isPasswordValid($user, $credentials['password']);
+        if($user->getBanned()==true)
+        {
+            throw new CustomUserMessageAuthenticationException(
+                'Jestes zbanowany.'
+            );
+        }
+        if(!$this->encoder->isPasswordValid($user, $credentials['password']))
+        {
+            throw new CustomUserMessageAuthenticationException(
+                'Niepoprawna nazwa uzytkownika lub haslo.'
+            );
+        }
+        else return true;
+        //return $this->encoder->isPasswordValid($user, $credentials['password']);
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)

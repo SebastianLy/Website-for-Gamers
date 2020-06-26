@@ -21,22 +21,22 @@
     </div>
 </div>
 <div class = "main-panel" id = "main-panel">
-    <a href="search" class="btn btn-primary">WYSZUKAJ</a>
-    <a href="/" class="btn btn-primary">TOP 10</a>
-    <a href="news" class="btn btn-primary">NOWOSCI</a>
+    <a href="search" class="btn btn-primary" style="font-size:20px; font-weight:bold">WYSZUKAJ</a>
+    <a href="/" class="btn btn-primary" style="font-size:20px; font-weight:bold">TOP 10</a>
+    <a href="news" class="btn btn-primary" style="font-size:20px; font-weight:bold">NOWOSCI</a>
 
     {% if is_granted('ROLE_USER') %}
-        <a href="logout" class="btn btn-primary" style="float:right">WYLOGUJ</a>
+        <a href="logout" class="btn btn-primary" style="float:right; font-size:20px; font-weight:bold">WYLOGUJ</a>
     {% else %}
-        <a href="login" class="btn btn-primary" style="float:right">LOGOWANIE</a>
+        <a href="login" class="btn btn-primary" style="float:right; font-size:20px; font-weight:bold">LOGOWANIE</a>
     {% endif %}
 
     {% if not is_granted('ROLE_USER') %}
-        <a href="register" class="btn btn-primary" style="float:right">REJESTRACJA</a>
+        <a href="register" class="btn btn-primary" style="float:right; font-size:20px; font-weight:bold">REJESTRACJA</a>
     {% endif %}
 
     {% if is_granted('ROLE_USER') %}
-        <a href="addgame" class="btn btn-primary">DODAJ GRE</a>
+        <a href="addgame" class="btn btn-primary" style="font-size:20px; font-weight:bold">DODAJ GRE</a>
     {% endif %}
 </div>
 
@@ -50,7 +50,7 @@
 <table class="flatTable">
 
     <tr class="titleTr">
-        <td colspan="5">
+        <td colspan="6">
             {% block title %}
                 Tytul
             {% endblock %}

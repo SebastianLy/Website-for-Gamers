@@ -32,7 +32,7 @@ body {
   height: 70px;
   text-align:center;
   font-family:Orbitron;
-  font-size:30px;
+  font-size:15px;
   color: #bebebe;
   background: #111112;
   border: 0px solid;
@@ -42,6 +42,8 @@ body {
   height: 30px;
   background: #232247;
   color: 	#bebebe;
+  font-size:15px;
+  font-weight: bold;
 }
 
 

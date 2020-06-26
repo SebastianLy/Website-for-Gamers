@@ -1,4 +1,4 @@
-{# Autor: Sebastian Lyszkowski #}
+{# Autorzy: Sebastian Lyszkowski, Marek Bobrowski #}
 {%  extends 'base.html.twig' %}
 
 {% block title %}
@@ -7,44 +7,52 @@
 
 {% block body %}
 
+
     {% for post in news %}
-    <tr class="headingTr">
-        <td colspan="4"style="font-weight: bold">
-            {{ post.author }}
-            <form action="deletepost" method="post" style="display: inline-block">
-                <input type="hidden" name="id" value="{{ post.id }}">
-                <button type="submit" class="btn btn-primary" style="border-color:white">USUN</button>
-            </form>
-        </td>
-        <td style="display: inline-block; width: 140px">{{ post.date|date('Y-m-d') }}</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td colspan="3" style="float: top; font-weight: bold; padding-right: 150px; padding-left: 150px">{{ post.title }}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td colspan="3">{{ post.content }}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td colspan="5"></td>
-    </tr>
+        <tr class="headingTr">
+            <td colspan="5" style="font-weight: bold">
+                Autor: {{ post.author }}
+            </td>
+            <td style="text-align: right;">
+                <div class="date" style="padding-right: 25px">
+                    {{ post.date|date('Y-m-d') }}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan = "6" style="font-weight: bold; text-align:center; font-size:20px">{{ post.title }}</td>
+        </tr>
+        <tr>
+            <td colspan = "6">{{ post.content }}</td>
+        </tr>
+
+        <tr>
+            <td colspan="6" style="text-align: right">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <div class="delete-post-button" style="padding-right: 25px">
+                        <form action="deletepost" method="post" style="display: inline-block">
+                            <input type="hidden" name="id" value="{{ post.id }}">
+                            <button type="submit" class="btn btn-primary" style="border-color:white;">USUN</button>
+                        </form>
+                    </div>
+                {% endif %}
+            </td>
+        </tr>
+
     {% endfor %}
 
     {% if pages > 1 %}
         <tr class="titleTr">
-            <td colspan="5">
+            <td colspan="6">
                 {% for page in 1..pages %}
-                <form action="changepagepost" method="post" style="display: inline-block">
-                    <input type="hidden" name="title" value="{{ title }}">
-                    <input type="hidden" name="pagenumber" value="{{ page }}">
-                    <button type="submit" class="btn btn-primary" style="border-color:white" name="page">{{ page }}</button>
-                </form>
+                    <form action="changepagenews" method="post" style="display: inline-block">
+                        <input type="hidden" name="pagenumber" value="{{ page }}">
+                        <button type="submit" class="btn btn-primary" style="border-color:white" name="page">{{ page }}</button>
+                    </form>
                 {% endfor %}
             </td>
         </tr>
     {% endif %}
+
 
 {% endblock %}

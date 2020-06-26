@@ -37,4 +37,6 @@ security:
         - { path: ^/rategame, roles: ROLE_USER }
         - { path: ^/userlist, roles: ROLE_ADMIN }
         - { path: ^/addpost, roles: ROLE_ADMIN }
+        - { path: ^/deletepost, roles: ROLE_ADMIN }
+        - { path: ^/ban, roles: ROLE_ADMIN }
 

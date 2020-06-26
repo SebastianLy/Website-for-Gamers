@@ -2,7 +2,7 @@
 {%  extends 'base.html.twig' %}
 
 {% block title %}
-    UZYTKOWNICY: {{ count - 1 }} {#odejmujemy admina#}
+    <div style="text-align: left">UZYTKOWNICY: {{ count - 1 }} </div>{#odejmujemy admina#}
     <form action="searchuser" method="post" style="display: inline-block; float: right">
             <input type="text" style="display: inline-block; width: 130px" name="name">
             <button type="submit" class="btn btn-primary" style="border-color:white; display: inline-block">SZUKAJ</button>
@@ -11,19 +11,25 @@
 
 {% block body %}
     <tr class="headingTr">
-        <td colspan="2">NAZWA</td>
-        <td colspan="2">E-MAIL</td>
-        <td>CZYNNOSCI</td>
+        <td colspan="1">NAZWA</td>
+        <td colspan="1">E-MAIL</td>
+        <td colspan="1">ZBANOWANY</td>
+        <td colspan="3">CZYNNOSCI</td>
     </tr>
     {% for user in users %}
         {% if user.name != "admin" %}
             <tr>
-                <td colspan="2">{{ user.name }}</td>
-                <td colspan="2">{{ user.email}}</td>
-                <td>
+                <td colspan="1">{{ user.name }}</td>
+                <td colspan="1">{{ user.email}}</td>
+                <td colspan="1">{{ user.banned ? 'TAK' : 'NIE'}}</td>
+                <td colspan="3">
                     <form action="ban" method="post" style="display: inline-block">
                         <input type="hidden" name="id" value="{{ user.id }}">
                         <button type="submit" class="btn btn-primary" style="border-color:white">ZBANUJ</button>
+                    </form>
+                    <form action="unban" method="post" style="display: inline-block">
+                        <input type="hidden" name="id" value="{{ user.id }}">
+                        <button type="submit" class="btn btn-primary" style="border-color:white">ODBANUJ</button>
                     </form>
                     <form action="deleteuser" method="post" style="display: inline-block">
                         <input type="hidden" name="id" value="{{ user.id }}">
@@ -36,7 +42,7 @@
 
     {% if pages > 1 %}
         <tr class="titleTr">
-            <td colspan="5">
+            <td colspan="6">
                 {% for page in 1..pages %}
                     <form action="changepageuserlist" method="post" style="display: inline-block">
                         <input type="hidden" name="pagenumber" value="{{ page }}">

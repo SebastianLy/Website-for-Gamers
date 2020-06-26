@@ -56,3 +56,9 @@ changepagenews:
 changepagepost:
     path: /changepagepost
     controller: App\Controller\NewsController::changePagePost
+ban:
+    path: /ban
+    controller: App\Controller\BanController::index
+unban:
+    path: /unban
+    controller: App\Controller\UnbanController::index
