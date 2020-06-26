@@ -23,7 +23,7 @@
 <div class = "main-panel" id = "main-panel">
     <a href="search" class="btn btn-primary" style="font-size:20px; font-weight:bold">WYSZUKAJ</a>
     <a href="/" class="btn btn-primary" style="font-size:20px; font-weight:bold">TOP 10</a>
-    <a href="news" class="btn btn-primary" style="font-size:20px; font-weight:bold">NOWOSCI</a>
+    <a href="news" class="btn btn-primary" style="font-size:20px; font-weight:bold">NOWOŚCI</a>
 
     {% if is_granted('ROLE_USER') %}
         <a href="logout" class="btn btn-primary" style="float:right; font-size:20px; font-weight:bold">WYLOGUJ</a>
@@ -36,13 +36,13 @@
     {% endif %}
 
     {% if is_granted('ROLE_USER') %}
-        <a href="addgame" class="btn btn-primary" style="font-size:20px; font-weight:bold">DODAJ GRE</a>
+        <a href="addgame" class="btn btn-primary" style="font-size:20px; font-weight:bold">DODAJ GRĘ</a>
     {% endif %}
 </div>
 
 {% if is_granted('ROLE_ADMIN') %}
     <div class = "main-panel" id = "main-panel" style = "background:#bd34eb">
-        <a href="userlist" class="btn btn-primary">ZARZADZAJ UZYTKOWNIKAMI</a>
+        <a href="userlist" class="btn btn-primary">ZARZĄDZAJ UŻYTKOWNIKAMI</a>
         <a href="addpost" class="btn btn-primary">DODAJ POST</a>
     </div>
 {% endif %}
@@ -52,19 +52,18 @@
     <tr class="titleTr">
         <td colspan="6">
             {% block title %}
-                Tytul
+                Tytuł
             {% endblock %}
         </td>
     </tr>
 
     {% block body %}
-        Wyswietlanie
+        Wyświetlanie
     {% endblock %}
 
 </table>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-<link href='http://fonts.googleapis.com/css?family=Advent+Pro&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Alata&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">

@@ -17,7 +17,7 @@
 
     {% if app.user %}
         <tr>
-            <td style="text-align: center; vertical-align: middle;">Jestes zalogowany jako {{ app.user.username }}, <a href="{{ path('app_logout') }}">Wyloguj</a></td>
+            <td style="text-align: center; vertical-align: middle;">Jesteś zalogowany jako {{ app.user.username }}, <a href="{{ path('app_logout') }}">Wyloguj</a></td>
         </tr>
     {% endif %}
 

@@ -37,7 +37,7 @@ class RateGameType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-primary',
                     'style' => 'border-color:white'],
-                'label' => 'OCEN'
+                'label' => 'OCEŃ'
             ])
         ;
     }

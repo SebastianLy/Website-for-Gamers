@@ -41,12 +41,13 @@ class RateGameController extends AbstractController
             ])
             ->add('review', TextareaType::class, [
                 'label'  => 'RECENZJA',
+                'attr' => ['style' => 'width: 75%; height:150px; font-size:20px'],
                 'required'   => false
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-primary',
                     'style' => 'border-color:white'],
-                'label' => 'OCEN'
+                'label' => 'OCEŃ'
             ])
             ->getForm();
 

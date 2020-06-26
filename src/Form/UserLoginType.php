@@ -17,10 +17,10 @@ class UserLoginType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'NAZWA UZYTKOWNIKA'
+                'label' => 'NAZWA UŻYTKOWNIKA'
             ])
             ->add('password',  PasswordType::class, [
-                'label' => 'HASLO'
+                'label' => 'HASŁO'
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-primary',

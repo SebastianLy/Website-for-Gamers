@@ -19,7 +19,7 @@ body {
   color: #bebebe;
 }
 .flatTable tr {
-  font-family: Orbitron;
+  font-family: 'Alata', sans-serif;
   height: 50px;
   background: #111112;
   border-bottom: rgba(0, 0, 0, 0.05) 1px solid;
@@ -31,14 +31,14 @@ body {
 .flatTable .titleTr {
   height: 70px;
   text-align:center;
-  font-family:Orbitron;
+  font-family: 'Alata', sans-serif;
   font-size:15px;
   color: #bebebe;
   background: #111112;
   border: 0px solid;
 }
 .flatTable .headingTr {
-  font-family:Orbitron;
+  font-family: 'Alata', sans-serif;
   height: 30px;
   background: #232247;
   color: 	#bebebe;
@@ -49,7 +49,7 @@ body {
 
 
 .main-panel {
-  font-family:Orbitron;
+  font-family: 'Alata', sans-serif;
   background: #232247;
   width:70%;
   margin-left:15%;

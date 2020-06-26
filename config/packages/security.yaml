@@ -39,4 +39,8 @@ security:
         - { path: ^/addpost, roles: ROLE_ADMIN }
         - { path: ^/deletepost, roles: ROLE_ADMIN }
         - { path: ^/ban, roles: ROLE_ADMIN }
+        - { path: ^/unban, roles: ROLE_ADMIN }
+        - { path: ^/changepageuser, roles: ROLE_ADMIN }
+        - { path: ^/changepageuserlist, roles: ROLE_ADMIN }
+        - { path: ^/searchuser, roles: ROLE_ADMIN }
 

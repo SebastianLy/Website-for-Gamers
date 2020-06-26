@@ -25,7 +25,7 @@ class AddGameType extends AbstractType
                 'choices'  => [
                     'Bijatyka' => 'Bijatyka',
                     'FPS' => 'FPS',
-                    'Platformowka' => 'Platformowka',
+                    'Platformówka' => 'Platformowka',
                     'Przygodowa' => 'Przygodowa',
                     'Akcji' => 'Akcji',
                     'MMORPG' => 'MMORPG',
@@ -34,7 +34,7 @@ class AddGameType extends AbstractType
                     'jRPG' => 'jRPG',
                     'Roguelike' => 'Roguelike',
                     'Symulator' => 'Symulator',
-                    'Wyscigowe' => 'Wyscigowe',
+                    'Wyścigowe' => 'Wyścigowe',
                     'Sportowe' => 'Sportowe',
                     'RTS' => 'RTS',
                 ],

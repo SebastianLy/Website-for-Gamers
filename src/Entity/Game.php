@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\GameRepository", repositoryClass=GameRepository::class)
- * @UniqueEntity(fields="title", message="Taka gra juz istnieje.")
+ * @UniqueEntity(fields="title", message="Taka gra już istnieje.")
  */
 class Game
 {
@@ -26,8 +26,8 @@ class Game
      * @Assert\Length(
      *      min = 2,
      *      max = 120,
-     *      minMessage = "Tytul musi miec conajmniej {{ limit }} znaki.",
-     *      maxMessage = "Tytul moze miec maksymalnie {{ limit }} znakow.",
+     *      minMessage = "Tytuł musi mieć co najmniej {{ limit }} znaki.",
+     *      maxMessage = "Tytuł może mieć maksymalnie {{ limit }} znaków.",
      *      allowEmptyString = false
      * )
      */
@@ -52,7 +52,7 @@ class Game
      * @ORM\Column(type="text", nullable=true)
      * @Assert\Length(
      *      max = 500,
-     *      maxMessage = "Recenzja moze miec maksymalnie {{ limit }} znakow.",
+     *      maxMessage = "Recenzja może mieć maksymalnie {{ limit }} znaków.",
      *      allowEmptyString = true
      * )
      */

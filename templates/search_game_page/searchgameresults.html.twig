@@ -2,7 +2,7 @@
 {%  extends 'base.html.twig' %}
 
 {% block title %}
-    Znaleziono {{ count }} wynikow
+    Znaleziono {{ count }} wyników.
 {% endblock %}
 
 {% block body %}
@@ -36,7 +36,7 @@
                 <td>
                     <form action="rategame" method="get">
                         <input type="hidden" name="id" value="{{ game.id }}">
-                        <button type="submit" class="btn btn-primary" style="border-color:white">OCEN</button>
+                        <button type="submit" class="btn btn-primary" style="border-color:white">OCEŃ</button>
                     </form>
                 </td>
             {% else %}

@@ -2,7 +2,7 @@
 {%  extends 'base.html.twig' %}
 
 {% block title %}
-    <div style="text-align: left">UZYTKOWNICY: {{ count - 1 }} </div>{#odejmujemy admina#}
+    <div style="text-align: left">UŻYTKOWNICY: {{ count - 1 }} </div>{#odejmujemy admina#}
     <form action="searchuser" method="post" style="display: inline-block; float: right">
             <input type="text" style="display: inline-block; width: 130px" name="name">
             <button type="submit" class="btn btn-primary" style="border-color:white; display: inline-block">SZUKAJ</button>
@@ -33,7 +33,7 @@
                     </form>
                     <form action="deleteuser" method="post" style="display: inline-block">
                         <input type="hidden" name="id" value="{{ user.id }}">
-                        <button type="submit" class="btn btn-primary" style="border-color:white">USUN</button>
+                        <button type="submit" class="btn btn-primary" style="border-color:white">USUŃ</button>
                     </form>
                 </td>
             </tr>

@@ -72,7 +72,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Niepoprawna nazwa uzytkownika lub haslo.');
+            throw new CustomUserMessageAuthenticationException('Niepoprawna nazwa użytkownika lub hasło.');
         }
 
         return $user;
@@ -83,13 +83,13 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         if($user->getBanned()==true)
         {
             throw new CustomUserMessageAuthenticationException(
-                'Jestes zbanowany.'
+                'Jesteś zbanowany.'
             );
         }
         if(!$this->encoder->isPasswordValid($user, $credentials['password']))
         {
             throw new CustomUserMessageAuthenticationException(
-                'Niepoprawna nazwa uzytkownika lub haslo.'
+                'Niepoprawna nazwa użytkownika lub hasło.'
             );
         }
         else return true;

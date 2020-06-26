@@ -2,7 +2,7 @@
 {%  extends 'base.html.twig' %}
 
 {% block title %}
-    <div style = "text-align: left">NOWOSCI ZE SWIATA GIER</div>
+    <div style = "text-align: left">NOWOŚCI ZE ŚWIATA GIER</div>
     <div style = "text-align: right">
         <form action="searchpost" method="post">
             <input type="text" style="display: inline-block; width: 130px" name="title">
@@ -38,7 +38,7 @@
                 <div class="delete-post-button" style="padding-right: 25px">
                     <form action="deletepost" method="post" style="display: inline-block">
                         <input type="hidden" name="id" value="{{ post.id }}">
-                        <button type="submit" class="btn btn-primary" style="border-color:white;">USUN</button>
+                        <button type="submit" class="btn btn-primary" style="border-color:white;">USUŃ</button>
                     </form>
                 </div>
             {% endif %}

@@ -10,8 +10,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields="name", message="Taki uzytkownik juz istnieje.")
- * @UniqueEntity(fields="email", message="Ten e-mail jest juz zajety.")
+ * @UniqueEntity(fields="name", message="Taki użytkownik już istnieje.")
+ * @UniqueEntity(fields="email", message="Ten e-mail jest już zajęty.")
  */
 class User implements UserInterface
 {
@@ -29,8 +29,8 @@ class User implements UserInterface
      * @Assert\Length(
      *      min = 2,
      *      max = 30,
-     *      minMessage = "Nazwa uzytkownika musi miec conajmniej {{ limit }} znaki.",
-     *      maxMessage = "Nazwa uzytkownika moze miec maksymalnie {{ limit }} znakow.",
+     *      minMessage = "Nazwa użytkownika musi mieć co najmniej {{ limit }} znaki.",
+     *      maxMessage = "Nazwa użytkownika może mieć maksymalnie {{ limit }} znaków.",
      *      allowEmptyString = false
      * )
      */
@@ -41,8 +41,8 @@ class User implements UserInterface
      * @Assert\Length(
      *      min = 6,
      *      max = 50,
-     *      minMessage = "E-mail musi miec conajmniej {{ limit }} znakow.",
-     *      maxMessage = "E-mail moze miec maksymalnie {{ limit }} znakow.",
+     *      minMessage = "E-mail musi mieć conajmniej {{ limit }} znaków.",
+     *      maxMessage = "E-mail moze mieć maksymalnie {{ limit }} znaków.",
      *      allowEmptyString = false
      * )
      */
@@ -53,8 +53,8 @@ class User implements UserInterface
      * @Assert\Length(
      *      min = 5,
      *      max = 30,
-     *      minMessage = "Haslo musi miec conajmniej {{ limit }} znakow.",
-     *      maxMessage = "Haslo moze miec maksymalnie {{ limit }} znakow.",
+     *      minMessage = "Hasło musi mieć co najmniej {{ limit }} znaków.",
+     *      maxMessage = "Hasło może mieć maksymalnie {{ limit }} znaków.",
      *      allowEmptyString = false
      * )
      */

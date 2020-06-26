@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class AddPostType extends AbstractType
 {
@@ -16,7 +17,8 @@ class AddPostType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'TYTUL'
+                'label' => 'TYTUŁ',
+                'attr' => ['style' => 'width: 75%; height:45px; font-size:20px']
             ])
             ->add('author', HiddenType::class, [
 
@@ -24,8 +26,9 @@ class AddPostType extends AbstractType
             ->add('date', HiddenType::class, [
 
             ])
-            ->add('content', TextType::class, [
-                'label' => 'TRESC'
+            ->add('content', TextareaType::class, [
+                'label' => 'TREŚĆ',
+                'attr' => ['style' => 'width: 75%; height:150px; font-size:20px']
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-primary',

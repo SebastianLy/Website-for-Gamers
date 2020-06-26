@@ -19,6 +19,7 @@ class RegistrationPageController extends AbstractController
         {
             $user=$form->getData();
             $user->setPassword($encoder->encodePassword($user, $user->getPassword()));
+            $user->setBanned(false);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
