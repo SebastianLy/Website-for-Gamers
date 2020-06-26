@@ -1,5 +1,5 @@
 <?php
-# Autor: Sebastian Lyszkowski
+# Autor: Sebastian Łyszkowski
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,7 +27,7 @@ class UserManagementController extends AbstractController
         if($pagenumber == 1)
             $users = $entity_manager->getRepository(User::class)->findAllFrom(0);
         else
-            $users = $entity_manager->getRepository(User::class)->findAllFrom($pagenumber*10-9);
+            $users = $entity_manager->getRepository(User::class)->findAllFrom($pagenumber*10-10);
 
         return $this->render('user_list_page/userlist.html.twig',
             array('users' => $users, 'count' => $count, 'pages' => $pages));
@@ -52,8 +52,7 @@ class UserManagementController extends AbstractController
         $users = $entity_manager->getRepository(User::class)->findByName(array($name),0);
 
         return $this->render('user_list_page/searchuserresults.html.twig',
-            array('users' => $users, 'count' => $count, 'pages' => $pages,
-                'name' => $name));
+            array('users' => $users, 'count' => $count, 'pages' => $pages, 'name' => $name));
     }
 
     public function changePageUser()
@@ -66,10 +65,9 @@ class UserManagementController extends AbstractController
         if($pagenumber == 1)
             $users = $entity_manager->getRepository(User::class)->findByName(array($name), 0);
         else
-            $users = $entity_manager->getRepository(User::class)->findByName(array($name), $pagenumber*10-9);
+            $users = $entity_manager->getRepository(User::class)->findByName(array($name), $pagenumber*10-10);
 
         return $this->render('user_list_page/searchuserresults.html.twig',
-            array('users' => $users, 'count' => $count, 'pages' => $pages,
-                'name' => $name));
+            array('users' => $users, 'count' => $count, 'pages' => $pages, 'name' => $name));
     }
 }

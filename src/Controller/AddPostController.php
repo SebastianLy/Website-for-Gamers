@@ -1,5 +1,5 @@
 <?php
-
+# Autor: Sebastian Łyszkowski
 namespace App\Controller;
 
 use App\Entity\News;
@@ -24,12 +24,8 @@ class AddPostController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($news);
             $entityManager->flush();
-            return $this->render('add_post/success.html.twig', [
-                'post_title'=> $news->getTitle()
-            ]);
+            return $this->render('add_post/success.html.twig', ['post_title'=> $news->getTitle()]);
         }
-        return $this->render('add_post/index.html.twig', [
-            'form'=>$form->createView()
-        ]);
+        return $this->render('add_post/index.html.twig', ['form'=>$form->createView()]);
     }
 }

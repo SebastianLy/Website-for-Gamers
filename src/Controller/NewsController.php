@@ -1,5 +1,5 @@
 <?php
-
+# Autor: Sebastian Łyszkowski
 namespace App\Controller;
 
 use App\Entity\News;
@@ -27,10 +27,9 @@ class NewsController extends AbstractController
         if($pagenumber == 1)
             $news = $entity_manager->getRepository(News::class)->findAllFrom(0);
         else
-            $news = $entity_manager->getRepository(News::class)->findAllFrom($pagenumber*10-9);
+            $news = $entity_manager->getRepository(News::class)->findAllFrom($pagenumber*10-10);
 
-        return $this->render('news/news.html.twig',
-            array('news' => $news, 'pages' => $pages));
+        return $this->render('news/news.html.twig', array('news' => $news, 'pages' => $pages));
     }
 
     public function delete()
@@ -52,8 +51,7 @@ class NewsController extends AbstractController
         $news = $entity_manager->getRepository(News::class)->findByName(array($title),0);
 
         return $this->render('news/searchresults.html.twig',
-            array('news' => $news, 'count' => $count, 'pages' => $pages,
-                'title' => $title));
+            array('news' => $news, 'count' => $count, 'pages' => $pages, 'title' => $title));
     }
 
     public function changePagePost()
@@ -61,15 +59,14 @@ class NewsController extends AbstractController
         $entity_manager = $this->getDoctrine()->getManager();
         $pagenumber = $_POST['pagenumber'];
         $title = $_POST['title'];
-        $count = $entity_manager->getRepository(User::class)->countName(array($title));
+        $count = $entity_manager->getRepository(News::class)->countName(array($title));
         $pages = ceil($count/10);
         if($pagenumber == 1)
-            $news = $entity_manager->getRepository(User::class)->findByName(array($title), 0);
+            $news = $entity_manager->getRepository(News::class)->findByName(array($title), 0);
         else
-            $news = $entity_manager->getRepository(User::class)->findByName(array($title), $pagenumber*10-9);
+            $news = $entity_manager->getRepository(News::class)->findByName(array($title), $pagenumber*10-10);
 
-        return $this->render('user_list_page/searchuserresults.html.twig',
-            array('news' => $news, 'count' => $count, 'pages' => $pages,
-                'title' => $title));
+        return $this->render('news/searchresults.html.twig',
+            array('news' => $news, 'count' => $count, 'pages' => $pages, 'title' => $title));
     }
 }

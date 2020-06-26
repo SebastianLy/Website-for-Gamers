@@ -1,5 +1,5 @@
 <?php
-# Autor: Sebastian Lyszkowski
+# Autor: Sebastian Łyszkowski
 
 namespace App\Entity;
 

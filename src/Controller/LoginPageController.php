@@ -4,10 +4,8 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserLoginType;
-use App\Form\UserRegisterType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class LoginPageController extends AbstractController
 {

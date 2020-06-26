@@ -1,5 +1,5 @@
 <?php
-# Autor: Sebastian Lyszkowski
+# Autor: Sebastian Łyszkowski
 
 namespace App\Form;
 
@@ -18,7 +18,7 @@ class AddGameType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'NAZWA'
+                'label' => 'TYTUŁ'
             ])
             ->add('genre', ChoiceType::class, [
                 'label' => 'GATUNEK',
@@ -47,6 +47,7 @@ class AddGameType extends AbstractType
                     'Mac' => 'Mac',
                     'Playstation' => 'Playstation',
                     'Xbox' => 'Xbox',
+                    'Switch' => 'Switch'
                 ],
                 'expanded' => true,
                 'multiple' => true
@@ -63,6 +64,7 @@ class AddGameType extends AbstractType
             ])
             ->add('review', TextareaType::class, [
                 'label'  => 'RECENZJA',
+                'attr' => ['style' => 'width: 75%; height:150px; font-size:20px'],
                 'required'   => false
             ])
             ->add('submit', SubmitType::class, [

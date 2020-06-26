@@ -1,5 +1,5 @@
 <?php
-# Autor: Sebastian Lyszkowski
+# Autor: Sebastian Łyszkowski
 
 namespace App\Controller;
 
@@ -21,12 +21,8 @@ class AddGameController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($game);
             $entityManager->flush();
-            return $this->render('add_game_page/success.html.twig', [
-                'game_name'=> $game->getTitle()
-            ]);
+            return $this->render('add_game_page/success.html.twig', ['game_name'=> $game->getTitle()]);
         }
-        return $this->render('add_game_page/addgame.html.twig', [
-            'form'=>$form->createView()
-        ]);
+        return $this->render('add_game_page/addgame.html.twig', ['form'=>$form->createView()]);
     }
 }

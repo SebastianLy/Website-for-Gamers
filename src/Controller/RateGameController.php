@@ -1,10 +1,9 @@
 <?php
-# Autor: Sebastian Lyszkowski
+# Autor: Sebastian Łyszkowski
 
 namespace App\Controller;
 
 use App\Entity\Game;
-use App\Form\RateGameType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -17,14 +16,12 @@ class RateGameController extends AbstractController
     public function index(Request $request)
     {
         $entity_manager = $this->getDoctrine()->getManager();
-        if ($request->isMethod('GET')) {
+        if ($request->isMethod('GET'))
             $id = $_GET['id'];
-        }
         else
-        {
             $id = $request->request->get('form')['id'];
-        }
         $data = ['averageRating' => null, 'review' => null, 'id' => null];
+
         $form = $this->createFormBuilder($data)
             ->add('averageRating', ChoiceType::class, [
                 'label' => 'OCENA',
@@ -65,9 +62,7 @@ class RateGameController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($game);
             $entityManager->flush();
-            return $this->render('rate_game_page/succesrategame.html.twig', [
-                'game_name'=> $game->getTitle()
-            ]);
+            return $this->render('rate_game_page/succesrategame.html.twig', ['game_name'=> $game->getTitle()]);
         }
         return $this->render('rate_game_page/rategame.html.twig', [
             'id' => $game->getId(),

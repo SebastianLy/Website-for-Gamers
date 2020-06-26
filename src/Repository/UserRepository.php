@@ -1,5 +1,5 @@
 <?php
-# Autor: Marek Bobrowski
+
 namespace App\Repository;
 
 use App\Entity\User;
@@ -19,6 +19,7 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
+    # Autor: Sebastian Łyszkowski---------------------------------------------------------------------------------------
     public function findAllFrom($offset): array
     {
         $qb = $this->createQueryBuilder('p')
@@ -58,6 +59,7 @@ class UserRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
+    # ------------------------------------------------------------------------------------------------------------------
 
     // /**
     //  * @return User[] Returns an array of User objects

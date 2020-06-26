@@ -1,5 +1,5 @@
 <?php
-# Autor: Sebastian Lyszkowski
+# Autor: Sebastian Łyszkowski
 
 namespace App\Controller;
 
@@ -23,8 +23,7 @@ class SearchGameController extends AbstractController
         $games = $entity_manager->getRepository(Game::class)->findByTitle(array($title),0);
 
         return $this->render('search_game_page/searchgameresults.html.twig',
-            array('games' => $games, 'count' => $count, 'pages' => $pages,
-            'title' => $title));
+            array('games' => $games, 'count' => $count, 'pages' => $pages, 'title' => $title));
     }
     public function changePage()
     {
@@ -36,10 +35,9 @@ class SearchGameController extends AbstractController
         if($pagenumber == 1)
             $games = $entity_manager->getRepository(Game::class)->findByTitle(array($title), 0);
         else
-            $games = $entity_manager->getRepository(Game::class)->findByTitle(array($title), $pagenumber*10-9);
+            $games = $entity_manager->getRepository(Game::class)->findByTitle(array($title), $pagenumber*10-10);
 
         return $this->render('search_game_page/searchgameresults.html.twig',
-            array('games' => $games, 'count' => $count, 'pages' => $pages,
-                'title' => $title));
+            array('games' => $games, 'count' => $count, 'pages' => $pages, 'title' => $title));
     }
 }

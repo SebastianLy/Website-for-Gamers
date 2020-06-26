@@ -1,64 +1,76 @@
-# Autorzy: Sebastian Lyszkowski, Marek Bobrowski
+# Autor: Marek Bobrowski -----------------------------------------------------------------------------------------------
 index:
     path: /
     controller: App\Controller\HomePageController::index
+
 registration:
     path: /register
     controller: App\Controller\RegistrationPageController::index
+
 app_login:
     path: /login
     controller: App\Controller\SecurityController::login
-search:
+
+ban:
+    path: /ban
+    controller: App\Controller\BanController::ban
+unban:
+    path: /unban
+    controller: App\Controller\BanController::unban
+# ----------------------------------------------------------------------------------------------------------------------
+# Autor: Sebastian Łyszkowski ------------------------------------------------------------------------------------------
+search_game:
     path: /search
     controller: App\Controller\SearchGameController::index
-searchresults:
+search_game_results:
     path: /searchresults
     controller: App\Controller\SearchGameController::search
-addgame:
-    path: /addgame
-    controller: App\Controller\AddGameController::index
-rategame:
-    path: /rategame
-    controller: App\Controller\RateGameController::index
-changepage:
+change_page_game:
     path: /changepage
     controller: App\Controller\SearchGameController::changePage
+
+add_game:
+    path: /addgame
+    controller: App\Controller\AddGameController::index
+
+rate_game:
+    path: /rategame
+    controller: App\Controller\RateGameController::index
+
+
 userlist:
     path: /userlist
     controller: App\Controller\UserManagementController::index
-deleteuser:
+delete_user:
     path: /deleteuser
     controller: App\Controller\UserManagementController::delete
-searchuser:
+search_user:
     path: /searchuser
     controller: App\Controller\UserManagementController::search
-changepageuserlist:
+change_page_userlist:
     path: /changepageuserlist
     controller: App\Controller\UserManagementController::changePage
-changepageuser:
+change_page_user:
     path: /changepageuser
     controller: App\Controller\UserManagementController::changePageUser
+
 news:
     path: /news
     controller: App\Controller\NewsController::index
-addpost:
-    path: /addpost
-    controller: App\Controller\AddPostController::index
-searchpost:
+search_post:
     path: /searchpost
     controller: App\Controller\NewsController::search
-deletepost:
+delete_post:
     path: /deletepost
     controller: App\Controller\NewsController::delete
-changepagenews:
+change_page_news:
     path: /changepagenews
     controller: App\Controller\NewsController::changePage
-changepagepost:
+change_page_post:
     path: /changepagepost
     controller: App\Controller\NewsController::changePagePost
-ban:
-    path: /ban
-    controller: App\Controller\BanController::index
-unban:
-    path: /unban
-    controller: App\Controller\UnbanController::index
+
+add_post:
+    path: /addpost
+    controller: App\Controller\AddPostController::index
+# ----------------------------------------------------------------------------------------------------------------------

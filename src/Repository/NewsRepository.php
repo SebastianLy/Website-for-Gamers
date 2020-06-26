@@ -19,6 +19,7 @@ class NewsRepository extends ServiceEntityRepository
         parent::__construct($registry, News::class);
     }
 
+    # Autor: Sebastian Łyszkowski---------------------------------------------------------------------------------------
     public function findAllFrom($offset): array
     {
         $qb = $this->createQueryBuilder('p')
@@ -59,6 +60,7 @@ class NewsRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
+    # ------------------------------------------------------------------------------------------------------------------
 
     // /**
     //  * @return News[] Returns an array of News objects
