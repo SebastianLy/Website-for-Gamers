@@ -19,6 +19,47 @@ class NewsRepository extends ServiceEntityRepository
         parent::__construct($registry, News::class);
     }
 
+    public function findAllFrom($offset): array
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->orderBy('p.id', 'DESC')
+            ->setMaxResults(10)
+            ->setFirstResult($offset);
+        $query = $qb->getQuery();
+        return $query->execute();
+    }
+
+    public function count($id)
+    {
+        $qb = $this->createQueryBuilder('p');
+        return $qb
+            ->select('count(p.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function findByName($title, $offset): array
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->where('REGEXP(p.Title, :regexp) = true')
+            ->setParameter('regexp', $title)
+            ->setMaxResults(10)
+            ->setFirstResult($offset);
+        $query = $qb->getQuery();
+        return $query->execute();
+    }
+
+    public function countName($title)
+    {
+        $qb = $this->createQueryBuilder('p');
+        return $qb
+            ->select('count(p.id)')
+            ->where('REGEXP(p.Title, :regexp) = true')
+            ->setParameter('regexp', $title)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
     // /**
     //  * @return News[] Returns an array of News objects
     //  */

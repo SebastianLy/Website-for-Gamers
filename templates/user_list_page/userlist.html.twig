@@ -38,7 +38,7 @@
         <tr class="titleTr">
             <td colspan="5">
                 {% for page in 1..pages %}
-                    <form action="changepageuser" method="post" style="display: inline-block">
+                    <form action="changepageuserlist" method="post" style="display: inline-block">
                         <input type="hidden" name="pagenumber" value="{{ page }}">
                         <button type="submit" class="btn btn-primary" style="border-color:white" name="page">{{ page }}</button>
                     </form>

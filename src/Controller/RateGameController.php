@@ -57,7 +57,6 @@ class RateGameController extends AbstractController
             $review = $request->request->get('form')['review'];
             $rating = $request->request->get('form')['averageRating'];
             $game->setSumOfVotes($rating);
-            $rate = ($game->getSumOfVotes())/($game->getNumberOfVotes());
             if($review != '')
             {
                 $game->setReview($review);

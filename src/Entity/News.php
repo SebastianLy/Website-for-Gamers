@@ -18,12 +18,17 @@ class News
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Title;
+
+    /**
      * @ORM\Column(type="string", length=150)
      */
     private $Author;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="string", length=20)
      */
     private $Date;
 
@@ -35,6 +40,18 @@ class News
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->Title;
+    }
+
+    public function setTitle(string $Title): self
+    {
+        $this->Title = $Title;
+
+        return $this;
     }
 
     public function getAuthor(): ?string
@@ -49,14 +66,14 @@ class News
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDate(): string
     {
         return $this->Date;
     }
 
-    public function setDate(\DateTimeInterface $Date): self
+    public function setDate(): self
     {
-        $this->Date = $Date;
+        $this->Date = date('Y-m-d');
 
         return $this;
     }

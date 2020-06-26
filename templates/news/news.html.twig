@@ -3,17 +3,50 @@
 
 {% block title %}
     NOWOSCI ZE SWIATA GIER
+    <form action="searchpost" method="post" style="display: inline-block; float: right">
+        <input type="text" style="display: inline-block; width: 130px" name="title">
+        <button type="submit" class="btn btn-primary" style="border-color:white; display: inline-block">SZUKAJ</button>
+    </form>
 {% endblock %}
 
 {% block body %}
     {% for post in news %}
-        <tr>
-            <td>{{ post.author }}</td>
-            <td>{{ post.date|date('Y-m-d') }}</td>
+        <tr class="headingTr">
+            <td colspan="4"style="font-weight: bold">
+                {{ post.author }}
+                <form action="deletepost" method="post" style="display: inline-block">
+                    <input type="hidden" name="id" value="{{ post.id }}">
+                    <button type="submit" class="btn btn-primary" style="border-color:white">USUN</button>
+                </form>
+            </td>
+            <td style="display: inline-block; width: 140px">{{ post.date|date('Y-m-d') }}</td>
         </tr>
         <tr>
-            <td>{{ post.content }}</td>
+            <td></td>
+            <td colspan="3" style="float: top; font-weight: bold; padding-right: 150px; padding-left: 150px">{{ post.title }}</td>
             <td></td>
         </tr>
+        <tr>
+            <td></td>
+            <td colspan="3">{{ post.content }}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="5"></td>
+        </tr>
     {% endfor %}
+
+    {% if pages > 1 %}
+        <tr class="titleTr">
+            <td colspan="5">
+                {% for page in 1..pages %}
+                    <form action="changepagenews" method="post" style="display: inline-block">
+                        <input type="hidden" name="pagenumber" value="{{ page }}">
+                        <button type="submit" class="btn btn-primary" style="border-color:white" name="page">{{ page }}</button>
+                    </form>
+                {% endfor %}
+            </td>
+        </tr>
+    {% endif %}
+
 {% endblock %}

@@ -32,6 +32,9 @@ deleteuser:
 searchuser:
     path: /searchuser
     controller: App\Controller\UserManagementController::search
+changepageuserlist:
+    path: /changepageuserlist
+    controller: App\Controller\UserManagementController::changePage
 changepageuser:
     path: /changepageuser
     controller: App\Controller\UserManagementController::changePageUser
@@ -41,3 +44,15 @@ news:
 addpost:
     path: /addpost
     controller: App\Controller\AddPostController::index
+searchpost:
+    path: /searchpost
+    controller: App\Controller\NewsController::search
+deletepost:
+    path: /deletepost
+    controller: App\Controller\NewsController::delete
+changepagenews:
+    path: /changepagenews
+    controller: App\Controller\NewsController::changePage
+changepagepost:
+    path: /changepagepost
+    controller: App\Controller\NewsController::changePagePost
