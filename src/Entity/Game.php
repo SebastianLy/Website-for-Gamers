@@ -59,12 +59,12 @@ class Game
     private $review;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="integer")
      */
     private $number_of_votes;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer")
      */
     private $sum_of_votes;
 
@@ -133,7 +133,7 @@ class Game
         return $this;
     }
 
-    public function getNumberOfVotes(): ?float
+    public function getNumberOfVotes(): int
     {
         return $this->number_of_votes;
     }
@@ -145,12 +145,12 @@ class Game
         return $this;
     }
 
-    public function getSumOfVotes(): ?int
+    public function getSumOfVotes(): int
     {
         return $this->sum_of_votes;
     }
 
-    public function setSumOfVotes(?int $sum_of_votes): self
+    public function setSumOfVotes(int $sum_of_votes): self
     {
         $this->sum_of_votes += $sum_of_votes;
         $this->setNumberOfVotes();

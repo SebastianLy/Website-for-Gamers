@@ -23,6 +23,8 @@ class UserRepository extends ServiceEntityRepository
     public function findAllFrom($offset): array
     {
         $qb = $this->createQueryBuilder('p')
+            ->where('p.roles != :key')
+            ->setParameter('key', '["ROLE_ADMIN"]')
             ->setMaxResults(10)
             ->setFirstResult($offset);
         $query = $qb->getQuery();
@@ -34,6 +36,8 @@ class UserRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('p');
         return $qb
             ->select('count(p.id)')
+            ->where('p.roles != :key')
+            ->setParameter('key', '["ROLE_ADMIN"]')
             ->getQuery()
             ->getSingleScalarResult();
     }
@@ -42,7 +46,8 @@ class UserRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('p')
             ->where('REGEXP(p.name, :regexp) = true')
-            ->setParameter('regexp', $name)
+            ->andWhere('p.roles != :key')
+            ->setParameters(array('regexp' => $name, 'key' => '["ROLE_ADMIN"]'))
             ->setMaxResults(10)
             ->setFirstResult($offset);
         $query = $qb->getQuery();
@@ -55,7 +60,8 @@ class UserRepository extends ServiceEntityRepository
         return $qb
             ->select('count(p.id)')
             ->where('REGEXP(p.name, :regexp) = true')
-            ->setParameter('regexp', $name)
+            ->andWhere('p.roles != :key')
+            ->setParameters(array('regexp' => $name, 'key' => '["ROLE_ADMIN"]'))
             ->getQuery()
             ->getSingleScalarResult();
     }
