@@ -32,10 +32,16 @@
             </td>
             {% if is_granted('ROLE_USER') %}
             <td>
-                <form action="rategame" method="get">
+                <form action="rategame" method="get" style="display: inline-block">
                     <input type="hidden" name="id" value="{{ game.id }}">
                     <button type="submit" class="btn btn-primary" style="border-color:white">OCEŃ</button>
                 </form>
+                {% if is_granted('ROLE_ADMIN') %}
+                <form action="deletegame" method="post" style="display: inline-block">
+                    <input type="hidden" name="gameid" value="{{ game.id }}">
+                    <button type="submit" class="btn btn-primary" style="border-color:white">USUŃ</button>
+                </form>
+                {% endif %}
             </td>
             {% else %}
             <td></td>

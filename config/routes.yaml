@@ -32,6 +32,9 @@ change_page_game:
 add_game:
     path: /addgame
     controller: App\Controller\AddGameController::index
+delete_game:
+    path: /deletegame
+    controller: App\Controller\AddGameController::delete
 
 rate_game:
     path: /rategame

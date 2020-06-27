@@ -64,7 +64,7 @@ class Game
     private $number_of_votes;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $sum_of_votes;
 
@@ -145,12 +145,12 @@ class Game
         return $this;
     }
 
-    public function getSumOfVotes(): int
+    public function getSumOfVotes(): ?int
     {
         return $this->sum_of_votes;
     }
 
-    public function setSumOfVotes(int $sum_of_votes): self
+    public function setSumOfVotes(?int $sum_of_votes): self
     {
         $this->sum_of_votes += $sum_of_votes;
         $this->setNumberOfVotes();

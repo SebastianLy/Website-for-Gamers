@@ -25,4 +25,14 @@ class AddGameController extends AbstractController
         }
         return $this->render('add_game_page/addgame.html.twig', ['form'=>$form->createView()]);
     }
+
+    public function delete()
+    {
+        $entity_manager = $this->getDoctrine()->getManager();
+        $gameid = $_POST['gameid'];
+        $game = $entity_manager->getRepository(Game::class)->findOneBy(array('id' => $gameid));
+        $entity_manager->remove($game);
+        $entity_manager->flush();
+        return $this->render('add_game_page/deletegamesuccesful.html.twig', array('game' => $game));
+    }
 }
