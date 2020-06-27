@@ -28,15 +28,26 @@ class AddGameType extends AbstractType
                     'Platformówka' => 'Platformowka',
                     'Przygodowa' => 'Przygodowa',
                     'Akcji' => 'Akcji',
+                    'Skradanka' => 'Skradanka',
+                    'Muzyczna' => 'Muzyczna',
                     'MMORPG' => 'MMORPG',
                     'RPG' => 'RPG',
                     'Hack and slash' => 'Hack and slash',
                     'jRPG' => 'jRPG',
                     'Roguelike' => 'Roguelike',
                     'Symulator' => 'Symulator',
-                    'Wyścigowe' => 'Wyścigowe',
-                    'Sportowe' => 'Sportowe',
+                    'Wyścigowa' => 'Wyścigowa',
+                    'Sportowa' => 'Sportowa',
+                    'TBS' => 'TBS',
                     'RTS' => 'RTS',
+                    'Logiczna' => 'Logiczna',
+                    'Ekonomiczna' => 'Ekonomiczna',
+                    'Survival' => 'Survival',
+                    'Battle Royal' => 'Battle Royal',
+                    'Sandbox' => 'Sandbox',
+                    'Horror' => 'Horror',
+                    'Fabularna gra akcji' => 'Fabularna gra akcji',
+                    'MOBA' => 'MOBA'
                 ],
             ])
             ->add('platform', ChoiceType::class, [
@@ -47,7 +58,8 @@ class AddGameType extends AbstractType
                     'Mac' => 'Mac',
                     'Playstation' => 'Playstation',
                     'Xbox' => 'Xbox',
-                    'Switch' => 'Switch'
+                    'Switch' => 'Switch',
+                    'Linux' => 'Linux'
                 ],
                 'expanded' => true,
                 'multiple' => true
