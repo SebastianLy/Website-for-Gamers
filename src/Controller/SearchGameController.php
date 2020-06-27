@@ -1,6 +1,5 @@
 <?php
 # Autor: Sebastian Łyszkowski
-
 namespace App\Controller;
 
 use App\Entity\Game;

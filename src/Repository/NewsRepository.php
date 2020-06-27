@@ -1,5 +1,5 @@
 <?php
-
+# Autor: Sebastian Łyszkowski
 namespace App\Repository;
 
 use App\Entity\News;

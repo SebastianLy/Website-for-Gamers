@@ -1,5 +1,5 @@
 <?php
-# Autor: Marek Bobrowski
+# Autor: Sebastian Łyszkowski
 namespace App\Form;
 
 use App\Entity\News;
@@ -20,12 +20,8 @@ class AddPostType extends AbstractType
                 'label' => 'TYTUŁ',
                 'attr' => ['style' => 'width: 75%; height:45px; font-size:20px']
             ])
-            ->add('author', HiddenType::class, [
-
-            ])
-            ->add('date', HiddenType::class, [
-
-            ])
+            ->add('author', HiddenType::class, [])
+            ->add('date', HiddenType::class, [])
             ->add('content', TextareaType::class, [
                 'label' => 'TREŚĆ',
                 'attr' => ['style' => 'width: 75%; height:150px; font-size:20px']
