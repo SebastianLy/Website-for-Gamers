@@ -31,7 +31,7 @@
                 {{ game.averagerating}}
             </td>
             {% if is_granted('ROLE_USER') %}
-            <td>
+            <td style="width:180px">
                 <form action="rategame" method="get" style="display: inline-block">
                     <input type="hidden" name="id" value="{{ game.id }}">
                     <button type="submit" class="btn btn-primary" style="border-color:white">OCEŃ</button>
