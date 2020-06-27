@@ -42,26 +42,26 @@ Tabela z newsami o grach musi zawierać:
 * treść - text.
 
 
-### 3. Stworzenie systemu rejestracji
+### 2. Stworzenie systemu rejestracji
 1. Widok wyświetla html z formularzem rejestracji do wypełnienia: nazwa użytkownika, e-mail, hasło, powtórzone hasło.
 2. Kontroler pobiera od użytkownika dane poprzez formularz, przesyła je do modelu.
 3. Model analizuje pobrane informacje, sprawdza ich poprawność:
 * e-mail oraz nazwa użytkownika nie są zajęte,
-* e-mail jest w zapisany w odpowiedniej formie typu a@b.c,
+* e-mail jest w zapisany w odpowiedniej formie typu a@b,
 * powtórzone hasło jest takie samo jak to pierwsze,
-* w pola zostały wpisane tylko dozwolone znaki,
 * ilość znaków w tych polach zawiera się w odpowiednich ramach.
 4. Jeśli dane są poprawne, to nowy użytkownik zostaje dodany do bazy danych, w przeciwnym wypadku zwracany jest odpowiedni błąd. W zależności od wyniku model dyktuje, co ma wyświetlić widok (komunikat o sukcesie lub informacja, co należy poprawić w formularzu).
 
-### 4. Stworzenie systemu logowania
+### 3. Stworzenie systemu logowania
 1. Widok wyświetla HTML z formularzem do logowania, w którym należy wypełnić: nazwa użytkownika i hasło.
 2. Kontroler pobiera od użytkownika dane z formularza oraz przesyła je do modelu.
 3. Model analizuje pobrane informacje oraz sprawdza ich poprawność:
 * czy w bazie danych znajduje się dana nazwa użytkownika,
-* czy hasło pasuje do nazwy użytkownika.
+* czy hasło pasuje do nazwy użytkownika,
+* czy konto użytkownika o podanej nazwie nie zostało zawieszone.
 4. Jeśli dane są poprawne użytkownik zostaje zalogowany do swojego konta. Jeśli nie, widok wyświetla komunikat o błędnych danych.
 
-### 5. Stworzenie systemu dodawania gry do bazy danych
+### 4. Stworzenie systemu dodawania gry do bazy danych
 1. Widok wyświetla formularz HTML do dodania gry do bazy danych. Należy wypełnić ją: nazwą gry, jej gatunkiem (wybór w polu checkbox), wybrać platformy na jakie została wydana (wybór w polu checkbox), oceną (wybór między 1-5) i recenzją.
 2. Kontroler pobiera od użytkownika te dane i przesyła do modelu.
 3. Model analizuje dane i sprawdza ich poprawność:
@@ -71,21 +71,37 @@ Tabela z newsami o grach musi zawierać:
 * recenzja ma mniej niż 500 znaków.
 4. Jeśli dane są poprawne gra zostaje poprawnie dodana do bazy, w przeciwnym wypadku zwracany jest odpowiedni błąd. W zależności od wyniku model dyktuje, co ma wyświetlić widok (komunikat o sukcesie lub informacja, co należy poprawić w formularzu).
 
-### 6. Stworzenie systemu oceny gry
+### 5. Stworzenie systemu oceny gry
 1. Widok, gdy wyświetla grę, wyświetla też dla zalogowanych użytkowników przycisk do oceny gry danej gry w skali 1-5 oraz pole do napisania recenzji.
 2. Kontroler przekazuje ocenę i recenzję do modelu.
 3. Model zwiększa liczbę i sumę ocen, wylicza średnią i zmienia ją w bazie. Następnie zastępuje wcześniejszą recenzję nową.
 4. Po wykonaniu swoich czynności model informuje widok poprzez kontroler o prawidłowym dokonaniu oceny gry.
 
-### 7. Stworzenie systemu znajdowania gry po nazwie
+### 6. Stworzenie systemu znajdowania gry po nazwie
 1. Widok wyświetla pole tekstowe, w którym użytkownik wprowadza tytuł gry.
 2. Kontroler pobiera dane i przesyła je do modelu.
 3. Model przeszukuje bazę gier w poszukiwaniu gier zawierających dany ciąg znaków i przy pomocy kontrolera przesyła wszystkie gry zawierające ten ciąg znaków do widoku do wyświetlenia.
 4. Jeśli model znalazł co najmniej jedną grę zawierającą ten dany ciag znaków, wtedy te gry zostają przesłane do widoku i wyświetlone w odpowiednim formacie. Jeśli nie to model przesyła informację o tym do widoku przy pomocy kontrolera i zostaje wyświetlona stosowna informacja.
 
-### 8. Stworzenie podstrony TOP 10
+### 7. Stworzenie podstrony TOP 10
 1. Po wejściu na tę podstronę, model pyta bazę danych o 10 gier z najwyższą średnią.
 2. Model nakazuje wyrenderować template html z tabelą wyświetlającą informacje o tych grach (w odpowiedniej kolejności).
 
-### 9. Stworzenie podstrony z aktualnościami ze świata gier
+### 8. Stworzenie podstrony z aktualnościami ze świata gier
 Strona wyświetla newsy w kolejności od najnowszych. Wyświetla takie informacje jak: tytuł, autor, data dodania oraz treść. Newsy dodaje administrator.
+
+### 9. Stworzenie panelu admina do zarządzania użytkownikami.
+Jeśli obecnie zalogowany użytkownik ma uprawnienia administratora, może wtedy przejść pod adres panelu zarządzania użytkownikami.
+Template twig wyświetla wszystkich użytkowników, którzy mają jedynie podstawowe uprawnienia. Administrator może zawiesić/odwiesić
+wybrane konto w zależności od wartości kolumny "banned" w tabeli "users". Oprócz tego, administrator może usunąć wybrane
+konto - wtedy jest ono po prostu usuwane z bazy.
+
+### 10. Stworzenie panelu admina do dodawania postów.
+Tak jak w poprzednim przypadku, tylko użytkownicy z uprawnieniami administratora mogą przejść do panelu dodawania postu.
+Mamy do wypełnienia prosty formularz: tytuł i treść postu. Podczas dodawania postu, automatycznie przypisuje mu się
+obecną datę.
+
+### 11. Skonfigurowanie dostępu do konkretnych miejsc.
+W pliku /config/packages/security.yaml należy zdefiniować ścieżki, do jakich mają dostęp użytkownicy o konkretnych rolach.
+Oprócz tego, szablon twig powinien sprawdzać uprawnienia obecnego użytkownika i wyświetlać przyciski panelu administratora
+tylko dla administratorów. Tak samo, niezalogowani użytkownicy nie mogą zobaczyć przycisków "DODAJ GRĘ" lub "OCEŃ".

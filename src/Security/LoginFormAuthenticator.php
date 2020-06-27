@@ -83,7 +83,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         if($user->getBanned()==true)
         {
             throw new CustomUserMessageAuthenticationException(
-                'Jesteś zbanowany.'
+                'Twoje konto zostało zawieszone.'
             );
         }
         if(!$this->encoder->isPasswordValid($user, $credentials['password']))
