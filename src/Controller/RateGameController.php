@@ -48,12 +48,16 @@ class RateGameController extends AbstractController
             ->getForm();
 
         $game = $entity_manager->getRepository(Game::class)->findOneBy(array('id' => $id));
+        $numberofvotes = $game->getNumberOfVotes();
+        $sumofvotes = $game->getSumOfVotes();
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
             $review = $request->request->get('form')['review'];
             $rating = $request->request->get('form')['averageRating'];
-            $game->setSumOfVotes($rating);
+            $game->setSumOfVotes($sumofvotes + $rating);
+            $game->setNumberOfVotes($numberofvotes + 1);
+            $game->setAverageRating($game->getSumOfVotes()/$game->getNumberOfVotes());
             if($review != '')
             {
                 $game->setReview($review);

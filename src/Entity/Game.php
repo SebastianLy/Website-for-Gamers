@@ -138,9 +138,9 @@ class Game
         return $this->number_of_votes;
     }
 
-    public function setNumberOfVotes(): self
+    public function setNumberOfVotes(int $number_of_votes): self
     {
-        $this->number_of_votes += 1;
+        $this->number_of_votes = $number_of_votes;
 
         return $this;
     }
@@ -152,9 +152,7 @@ class Game
 
     public function setSumOfVotes(?int $sum_of_votes): self
     {
-        $this->sum_of_votes += $sum_of_votes;
-        $this->setNumberOfVotes();
-        $this->setAverageRating($this->getSumOfVotes()/$this->getNumberOfVotes());
+        $this->sum_of_votes = $sum_of_votes;
 
         return $this;
     }

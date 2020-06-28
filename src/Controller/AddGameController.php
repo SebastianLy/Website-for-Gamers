@@ -17,6 +17,8 @@ class AddGameController extends AbstractController
         if($form->isSubmitted() && $form->isValid())
         {
             $game=$form->getData();
+            $game->setNumberOfVotes(1);
+            $game->setAverageRating($game->getSumOfVotes());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($game);
             $entityManager->flush();
